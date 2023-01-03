@@ -6,7 +6,10 @@ public class MapLoader : IMapLoader
 {
     public Map Load(string mapFile)
     {
-        throw new NotImplementedException();
+        var fileData = File.ReadAllLines(mapFile);
+        var mapRepresentation = CreateMapRepresentation(fileData);
+
+        return new Map(mapRepresentation, true);
     }
     
     private static string[,] CreateMapRepresentation(string[] fileText)
