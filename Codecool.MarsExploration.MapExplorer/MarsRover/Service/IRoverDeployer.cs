@@ -1,6 +1,8 @@
+using Codecool.MarsExploration.MapGenerator.Calculators.Service;
+
 namespace Codecool.MarsExploration.MapExplorer.MarsRover.Service;
 
 public interface IRoverDeployer
 { 
-    Rover Deploy();
+    Rover Deploy(Configuration.Configuration configuration, CoordinateCalculator coordinateCalculator);
 }

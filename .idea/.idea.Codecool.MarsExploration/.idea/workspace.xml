@@ -6,11 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65e463d0-8a8e-4b1c-ba38-e58a8cf8a718" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/MarsRover/Service/IRoverDeployer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/MarsRover/Service/RoverDeployer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Simulation/Model/SimulationContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Codecool.MarsExploration.MapExplorer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Codecool.MarsExploration.MapExplorer.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Configuration/Model/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Configuration/Model/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Configuration/Service/ConfigurationValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Configuration/Service/ConfigurationValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Configuration/Service/IConfigurationValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Configuration/Service/IConfigurationValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/MarsRover/Service/IRoverDeployer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/MarsRover/Service/IRoverDeployer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/MarsRover/Service/RoverDeployer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/MarsRover/Service/RoverDeployer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +87,7 @@
       <workItem from="1672694103019" duration="954000" />
       <workItem from="1672763639343" duration="4050000" />
       <workItem from="1672779967835" duration="245000" />
-      <workItem from="1672833538353" duration="3382000" />
+      <workItem from="1672833538353" duration="6677000" />
     </task>
     <servers />
   </component>

@@ -5,12 +5,12 @@ namespace Codecool.MarsExploration.MapExplorer.Configuration.Service;
 
 public class ConfigurationValidator : IConfigurationValidator
 {
-    public bool Validate(SimulationParameters simulationParameters, MapLoader.MapLoader mapLoader)
+    public bool Validate(Configuration configuration, MapLoader.MapLoader mapLoader)
     {
-        var map = mapLoader.Load(simulationParameters.MapFile);
-        if (CoordinateValidator(map.Representation, simulationParameters.Coordinate) 
-            && simulationParameters.StepsToTimeOut > 0
-            && simulationParameters.SymbolsOfTheResources != null)
+        var map = mapLoader.Load(configuration.MapFile);
+        if (CoordinateValidator(map.Representation, configuration.LandingSpot) 
+            && configuration.StepsToTimeOut > 0
+            && configuration.SymbolsOfTheResources != null)
         {
             return true;
         }
