@@ -5,7 +5,10 @@
     <projectFile>Codecool.MarsExploration.MapGenerator/Codecool.MarsExploration.MapGenerator.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65e463d0-8a8e-4b1c-ba38-e58a8cf8a718" name="Changes" comment="" />
+    <list default="true" id="65e463d0-8a8e-4b1c-ba38-e58a8cf8a718" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/obj/Debug/net6.0/Codecool.MarsExploration.MapExplorer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/obj/Debug/net6.0/Codecool.MarsExploration.MapExplorer.csproj.AssemblyReference.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,17 +23,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.Codecool.MarsExploration.MapGenerator">
     <configuration name="Codecool.MarsExploration.MapExplorer" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -79,6 +82,8 @@
       <updated>1672694097514</updated>
       <workItem from="1672694103019" duration="954000" />
       <workItem from="1672763639343" duration="4050000" />
+      <workItem from="1672779967835" duration="245000" />
+      <workItem from="1672833538353" duration="783000" />
     </task>
     <servers />
   </component>
