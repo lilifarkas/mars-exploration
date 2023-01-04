@@ -5,4 +5,4 @@ using Codecool.MarsExploration.MapGenerator.MapElements.Model;
 
 namespace Codecool.MarsExploration.MapExplorer.Simulation.Model;
 
-public record Configuration(int Step, int StepsToReachTimeOut, Rover Rover, Coordinate LocationOfTheSpaceship, Map Map, IEnumerable<string> SymbolsToLookFor, ExplorationOutcome ExplorationOutcome);
+public record SimulationContext(int Step, int StepsToReachTimeOut, Rover Rover, Coordinate LocationOfTheSpaceship, Map Map, IEnumerable<string> SymbolsToLookFor, ExplorationOutcome ExplorationOutcome);
