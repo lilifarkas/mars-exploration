@@ -16,8 +16,6 @@ public class MapLoader : IMapLoader
     {
         string[,] mapRepresentation = new string[fileText.Length,fileText.Length];
 
-        string[,] asd = { { "a", "b", "c" }, { "d", "e", "f" } };
-        
         int row = 0;
         foreach (var s in fileText)
         {
@@ -28,7 +26,6 @@ public class MapLoader : IMapLoader
             
             row++;
         }
-
         return mapRepresentation;
     }
 }
