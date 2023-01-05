@@ -5,5 +5,5 @@ namespace Codecool.MarsExploration.MapExplorer.Analyzer;
 
 public interface IOutcomeAnalyzer
 {
-    ExplorationOutcome Analyze(SimulationContext simulationContext);
+    ExplorationOutcome Analyze(SimulationContext simulationContext, int step);
 }

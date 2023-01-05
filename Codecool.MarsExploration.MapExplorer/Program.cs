@@ -20,7 +20,7 @@ class Program
     {
         var mapFile = $@"{WorkDir}\Resources\exploration-0.map";
         var resources = new List<string>() { "*", "%" };
-        const int stepsToTimeout = 900;
+        const int stepsToTimeout = 500;
         var landingSpot = new Coordinate(6, 6);
 
         var configObject = new Configuration.Configuration(mapFile, landingSpot, resources, stepsToTimeout);

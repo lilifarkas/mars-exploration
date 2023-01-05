@@ -10,7 +10,7 @@ public class LackOfResourcesAnalyzer : IOutcomeAnalyzer
     // - analyzer could check whether the rover has almost explored the whole chart and no right condition has been found.
 
     
-    public ExplorationOutcome Analyze(SimulationContext simulationContext)
+    public ExplorationOutcome Analyze(SimulationContext simulationContext, int step)
     {
         var mapCharts = simulationContext.Map.Representation.GetLength(0) * simulationContext.Map.Representation.GetLength(1);
         var roverExplored = simulationContext.Rover.EncounteredResources.Count();
@@ -32,7 +32,7 @@ public class LackOfResourcesAnalyzer : IOutcomeAnalyzer
             }
         }
         
-        if ((double)roverExplored / mapCharts > 0.7 && minerals.Count() < 4 && waters.Count() < 3)
+        if ((double)roverExplored / mapCharts > 0.009 && minerals.Count() < 4 && waters.Count() < 3)
         {
             return ExplorationOutcome.Error;
         }

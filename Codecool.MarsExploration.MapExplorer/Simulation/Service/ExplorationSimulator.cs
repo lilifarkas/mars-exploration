@@ -57,15 +57,15 @@ public class ExplorationSimulator : IExplorationSimulator
     private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
     {
         int step = 1;
-        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut > step)
+        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut >= step)
         {
             // var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
             // Console.WriteLine(message);
             _simulationStepLoggingUi.Run(simulationContext, step);
             exploringRoutine.Step(simulationContext.Rover);
             var results = new[] {
-                _lackOfResourcesAnalyzer.Analyze(simulationContext), _succesAnalyzer.Analyze(simulationContext),
-                _timeOutanalyzer.Analyze(simulationContext)
+                _lackOfResourcesAnalyzer.Analyze(simulationContext, step), _succesAnalyzer.Analyze(simulationContext, step),
+                _timeOutanalyzer.Analyze(simulationContext, step)
             };
             if (results.Any(s=> s != ExplorationOutcome.InProgress))
             {
