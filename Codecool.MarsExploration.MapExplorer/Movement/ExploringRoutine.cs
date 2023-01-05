@@ -28,7 +28,7 @@ public class ExploringRoutine : BaseRoutine
         
         foreach (var visibleTile in rover.VisibleTiles)
         {
-            if (map.IsEmpty(visibleTile))
+            if (CanMove(map.Representation,visibleTile) && map.IsEmpty(visibleTile))
             {
                 emptyTiles.Add(visibleTile);
             }
@@ -44,5 +44,14 @@ public class ExploringRoutine : BaseRoutine
         return coordinates.Any()
             ? coordinates[Random.Next(coordinates.Count)]
             : _coordinateCalculator.GetRandomCoordinate(1);
+    }
+    
+    private static bool CanMove(string?[,] map, Coordinate coordinate)
+    {
+        return coordinate.X >= 0
+               && coordinate.X < map.GetLength(0)
+               && coordinate.Y >= 0
+               && coordinate.Y < map.GetLength(1)
+               && map[coordinate.X, coordinate.Y] == null;
     }
 }
