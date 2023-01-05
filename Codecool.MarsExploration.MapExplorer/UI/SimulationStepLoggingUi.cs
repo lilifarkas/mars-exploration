@@ -13,22 +13,22 @@ public class SimulationStepLoggingUi
         _logger = logger;
     }
 
-    public void Run(SimulationContext simulationContext)
+    public void Run(SimulationContext simulationContext, int step)
     {
         switch (simulationContext.ExplorationOutcome)
         {
             case ExplorationOutcome.InProgress:
-                _logger.Log($"STEP {simulationContext.Step} EVENT position UNIT {simulationContext.Rover.Id} POSITION [{simulationContext.Rover.CurrentPosition.X}, {simulationContext.Rover.CurrentPosition.Y}]");
+                _logger.Log($"STEP {step} EVENT position UNIT {simulationContext.Rover.Id} POSITION [{simulationContext.Rover.CurrentPosition.X}, {simulationContext.Rover.CurrentPosition.Y}]");
                 break;
             case ExplorationOutcome.Colonizable:
                 _logger.Log(
-                    $"STEP {simulationContext.Step} EVENT outcome OUTCOME {simulationContext.ExplorationOutcome}");
+                    $"STEP {step} EVENT outcome OUTCOME {simulationContext.ExplorationOutcome}");
                 break;
             case ExplorationOutcome.Error:
-                _logger.Log($"STEP {simulationContext.Step} EVENT outcome OUTCOME {simulationContext.ExplorationOutcome}");
+                _logger.Log($"STEP {step} EVENT outcome OUTCOME {simulationContext.ExplorationOutcome}");
                 break;
             case ExplorationOutcome.Timeout:
-                _logger.Log($"STEP {simulationContext.Step} EVENT outcome OUTCOME {simulationContext.ExplorationOutcome}");
+                _logger.Log($"STEP {step} EVENT outcome OUTCOME {simulationContext.ExplorationOutcome}");
                 break;
         }
         
