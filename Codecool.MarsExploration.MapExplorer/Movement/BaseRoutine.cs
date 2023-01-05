@@ -9,15 +9,12 @@ public abstract class BaseRoutine
 {
     private readonly CoordinateCalculator _coordinateCalculator;
     
-    private readonly Configuration.Configuration _configuration;
+    private readonly SimulationContext _simulationContext;
 
-    private readonly MapLoader.MapLoader _mapLoader;
-
-    protected BaseRoutine(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration, MapLoader.MapLoader mapLoader)
+    protected BaseRoutine(CoordinateCalculator coordinateCalculator, SimulationContext simulationContext)
     {
         _coordinateCalculator = coordinateCalculator;
-        _configuration = configuration;
-        _mapLoader = mapLoader;
+        _simulationContext = simulationContext;
     }
 
     protected void Move(Rover rover,Coordinate coordinate)
@@ -29,13 +26,13 @@ public abstract class BaseRoutine
     {
         rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 1);
         
-        var map = _mapLoader.Load(_configuration.MapFile);
+        var map = _simulationContext.Map;
         
         var resources = rover.EncounteredResources.ToList();
         
         foreach (var visibleTile in rover.VisibleTiles)
         {
-            if (_configuration.SymbolsOfTheResources.Contains(map.Representation[visibleTile.X,visibleTile.Y]))
+            if (_simulationContext.SymbolsToLookFor.Contains(map.Representation[visibleTile.X,visibleTile.Y]))
             {
                 resources.Add(visibleTile);
             }

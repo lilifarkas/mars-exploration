@@ -1,4 +1,5 @@
 using Codecool.MarsExploration.MapExplorer.MarsRover;
+using Codecool.MarsExploration.MapExplorer.Simulation.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Service;
 
@@ -7,15 +8,15 @@ namespace Codecool.MarsExploration.MapExplorer.Movement;
 public class ReturningRoutine : BaseRoutine
 {
     
-    private readonly Configuration.Configuration _configuration;
-    public ReturningRoutine(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration, MapLoader.MapLoader mapLoader) : base(coordinateCalculator, configuration, mapLoader)
+    private readonly SimulationContext _simulationContext;
+    public ReturningRoutine(CoordinateCalculator coordinateCalculator, SimulationContext simulationContext) : base(coordinateCalculator, simulationContext)
     {
-        _configuration = configuration;
+        _simulationContext = simulationContext;
     }
 
     public override void Step(Rover rover)
     {
-        Move(rover, _configuration.LandingSpot);
+        Move(rover, _simulationContext.LocationOfTheSpaceship);
         Scan(rover);
     }
 }

@@ -1,4 +1,5 @@
 using Codecool.MarsExploration.MapExplorer.MarsRover;
+using Codecool.MarsExploration.MapExplorer.Simulation.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Service;
 
@@ -7,24 +8,20 @@ namespace Codecool.MarsExploration.MapExplorer.Movement;
 public class ExploringRoutine : BaseRoutine
 {
     private readonly CoordinateCalculator _coordinateCalculator;
-    
-    private readonly Configuration.Configuration _configuration;
-
-    private readonly MapLoader.MapLoader _mapLoader;
-    
+    private readonly SimulationContext _simulationContext;
     private static readonly Random Random = new();
-    public ExploringRoutine(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration, MapLoader.MapLoader mapLoader) : base(coordinateCalculator,configuration,mapLoader)
+    
+    public ExploringRoutine(CoordinateCalculator coordinateCalculator, SimulationContext simulationContext): base(coordinateCalculator, simulationContext)
     {
         _coordinateCalculator = coordinateCalculator;
-        _configuration = configuration;
-        _mapLoader = mapLoader;
+        _simulationContext = simulationContext;
     }
 
     public override void Step(Rover rover)
     {
         var emptyTiles = new List<Coordinate>();
-        
-        var map = _mapLoader.Load(_configuration.MapFile);
+
+        var map = _simulationContext.Map;
         
         foreach (var visibleTile in rover.VisibleTiles)
         {
