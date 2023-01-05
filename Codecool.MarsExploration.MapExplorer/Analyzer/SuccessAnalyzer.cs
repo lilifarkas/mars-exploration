@@ -9,7 +9,14 @@ public class SuccessAnalyzer : IOutcomeAnalyzer
     
     public bool Analize(SimulationContext simulationContext)
     {
-        
-        throw new NotImplementedException();
+        var countMinerals = simulationContext.SymbolsToLookFor.Count(x => x == "mineral");
+        var countWaters = simulationContext.SymbolsToLookFor.Count(x => x == "water");
+
+        if (countMinerals >= 4 && countWaters >= 3)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
