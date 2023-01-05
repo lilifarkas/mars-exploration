@@ -7,9 +7,8 @@ namespace Codecool.MarsExploration.MapExplorer.Movement;
 
 public class ReturningRoutine : BaseRoutine
 {
-    
     private readonly SimulationContext _simulationContext;
-    public ReturningRoutine(CoordinateCalculator coordinateCalculator, SimulationContext simulationContext) : base(coordinateCalculator, simulationContext)
+    public ReturningRoutine(SimulationContext simulationContext) : base(simulationContext)
     {
         _simulationContext = simulationContext;
     }

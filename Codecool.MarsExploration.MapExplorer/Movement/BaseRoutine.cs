@@ -7,13 +7,12 @@ namespace Codecool.MarsExploration.MapExplorer.Movement;
 
 public abstract class BaseRoutine
 {
-    private readonly CoordinateCalculator _coordinateCalculator;
+    private readonly CoordinateCalculator _coordinateCalculator = new CoordinateCalculator();
     
     private readonly SimulationContext _simulationContext;
 
-    protected BaseRoutine(CoordinateCalculator coordinateCalculator, SimulationContext simulationContext)
+    protected BaseRoutine(SimulationContext simulationContext)
     {
-        _coordinateCalculator = coordinateCalculator;
         _simulationContext = simulationContext;
     }
 
