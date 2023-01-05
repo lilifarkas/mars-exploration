@@ -15,7 +15,7 @@ public class SimulationStepLoggingUi
         _logger = logger;
     }
 
-    public void Run()
+    public void Run(SimulationContext simulationContext)
     {
         switch (_simulationContext.ExplorationOutcome)
         {
