@@ -1,7 +1,12 @@
-﻿using Codecool.MarsExploration.MapExplorer.Configuration.Service;
-using Codecool.MarsExploration.MapExplorer.ConfigurationCreator.Service;
+﻿using Codecool.MarsExploration.MapExplorer.Analyzer;
+using Codecool.MarsExploration.MapExplorer.Configuration.Service;
 using Codecool.MarsExploration.MapExplorer.MapLoader;
+using Codecool.MarsExploration.MapExplorer.MarsRover;
+using Codecool.MarsExploration.MapExplorer.MarsRover.Service;
+using Codecool.MarsExploration.MapExplorer.Movement;
+using Codecool.MarsExploration.MapExplorer.Simulation.Service;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
+using Codecool.MarsExploration.MapGenerator.Calculators.Service;
 
 namespace Codecool.MarsExploration.MapExplorer;
 
@@ -11,16 +16,23 @@ class Program
 
     public static void Main(string[] args)
     {
-        IConfigurationValidator configurationValidator = new ConfigurationValidator();
-        IMapLoader mapLoader = new MapLoader.MapLoader();
-        IConfigCreator configCreator = new ConfigCreator(configurationValidator, mapLoader);
-        
         var mapFile = $@"{WorkDir}\Resources\exploration-0.map";
         var resources = new List<string>() { "*", "%" };
         const int stepsToTimeout = 90;
         var landingSpot = new Coordinate(6, 6);
 
-        var configObject = configCreator.ConfigurationCreator(mapFile, resources, landingSpot, stepsToTimeout);
+        var configObject = new Configuration.Configuration(mapFile, landingSpot, resources, stepsToTimeout);
 
+        MapLoader.MapLoader mapLoader = new MapLoader.MapLoader();
+        CoordinateCalculator coordinateCalculator = new CoordinateCalculator();
+        IConfigurationValidator configurationValidator = new ConfigurationValidator();
+        IOutcomeAnalyzer successAnalyzer = new SuccessAnalyzer();
+        IOutcomeAnalyzer timeOutAnalyzer = new TimeOutAnalyzer();
+        IOutcomeAnalyzer lackOfResourcesAnalyzer = new LackOfResourcesAnalyzer();
+        IRoverDeployer roverDeployer = new RoverDeployer(coordinateCalculator,configObject,mapLoader);
+        
+        IExplorationSimulator explorationSimulator = new ExplorationSimulator(mapLoader, configurationValidator, lackOfResourcesAnalyzer,successAnalyzer,timeOutAnalyzer,roverDeployer);
+        
+        explorationSimulator.RunSimulation(configObject);
     }
 }
