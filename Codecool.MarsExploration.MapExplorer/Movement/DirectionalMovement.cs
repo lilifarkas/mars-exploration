@@ -23,10 +23,12 @@ public class DirectionalMovement : IDirectionalMovement
             _coordinateCalculator.GetAdjacentCoordinates(_simulationContext.Rover.CurrentPosition, _simulationContext.Map.Representation.Length);
         var emptyTiles = new List<Coordinate>();
         var map = _simulationContext.Map;
-
         foreach (var adjacentCoordinate in adjacentCoordinates)
         {
-            if (map.Representation[adjacentCoordinate.X, adjacentCoordinate.Y] == " " && adjacentCoordinate != _simulationContext.Rover.CurrentPosition)
+            if (map.Representation[adjacentCoordinate.X, adjacentCoordinate.Y] == " " && adjacentCoordinate != _simulationContext.Rover.CurrentPosition && adjacentCoordinate.X >= 0
+                && adjacentCoordinate.X < map.Representation.GetLength(0)-1
+                && adjacentCoordinate.Y >= 0
+                && adjacentCoordinate.Y < map.Representation.GetLength(1)-1)
             {
                 emptyTiles.Add(adjacentCoordinate);   
             }
@@ -39,7 +41,6 @@ public class DirectionalMovement : IDirectionalMovement
     {
         var coords = GetAdjacentEmptyTiles();
         var acceptedCoords = new List<Coordinate>();
- 
         var roverDirection = _simulationContext.Rover.Direction;
         acceptedCoords = roverDirection switch
         {
@@ -49,9 +50,42 @@ public class DirectionalMovement : IDirectionalMovement
             RoverDirection.Down => (List<Coordinate>)MoveDown(coords),
             _ => acceptedCoords
         };
-        _simulationContext.Rover.CurrentPosition = acceptedCoords[Random.Next(acceptedCoords.Count)];
+        var chosenCoordinate = acceptedCoords[Random.Next(acceptedCoords.Count)];
+        ChangeDirection(chosenCoordinate, _simulationContext.Rover);
+        _simulationContext.Rover.CurrentPosition = chosenCoordinate;
     }
-    
+
+    private void ChangeDirection(Coordinate coordinate, Rover rover)
+    {
+        if (coordinate.X-rover.CurrentPosition.X == 1 && coordinate.Y-rover.CurrentPosition.Y == 0)
+        {
+            rover.Direction = RoverDirection.Down;
+        }
+        else if (coordinate.X-rover.CurrentPosition.X == -1 && coordinate.Y-rover.CurrentPosition.Y == 0)
+        {
+            rover.Direction = RoverDirection.Up;
+        }
+        
+        else if (coordinate.X-rover.CurrentPosition.X == 1 && coordinate.Y-rover.CurrentPosition.Y == -1)
+        {
+            rover.Direction = Random.Next(2) == 0 ? RoverDirection.Down : RoverDirection.Left;
+        }
+        else if (coordinate.X-rover.CurrentPosition.X == -1 && coordinate.Y-rover.CurrentPosition.Y == -1)
+        {
+            rover.Direction = Random.Next(2) == 0 ? RoverDirection.Up : RoverDirection.Left;
+        }
+        
+        else if (coordinate.X-rover.CurrentPosition.X == -1 && coordinate.Y-rover.CurrentPosition.Y == 1)
+        {
+            rover.Direction = Random.Next(2) == 0 ? RoverDirection.Up : RoverDirection.Right;
+        }
+        else if (coordinate.X-rover.CurrentPosition.X == 1 && coordinate.Y-rover.CurrentPosition.Y == 1)
+        {
+            rover.Direction = Random.Next(2) == 0 ? RoverDirection.Down : RoverDirection.Right;
+        }
+
+        Console.WriteLine(rover.Direction);
+    }
     private IEnumerable<Coordinate> MoveLeft(IEnumerable<Coordinate> coordinates)
     {
         var currentPos = _simulationContext.Rover.CurrentPosition;
@@ -63,7 +97,7 @@ public class DirectionalMovement : IDirectionalMovement
                 acceptedCoordinates.Add(coordinate);
             }
         }
-
+        
         return acceptedCoordinates;
     }
 
