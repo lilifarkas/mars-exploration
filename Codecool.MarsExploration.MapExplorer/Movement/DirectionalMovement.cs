@@ -1,4 +1,5 @@
 ﻿using Codecool.MarsExploration.MapExplorer.Direction;
+using Codecool.MarsExploration.MapExplorer.MarsRover;
 using Codecool.MarsExploration.MapExplorer.Simulation.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Service;
@@ -19,7 +20,7 @@ public class DirectionalMovement : IDirectionalMovement
     private IEnumerable<Coordinate> GetAdjacentEmptyTiles()
     {
         var adjacentCoordinates =
-            _coordinateCalculator.GetAdjacentCoordinates(_simulationContext.Rover.CurrentPosition, 9);
+            _coordinateCalculator.GetAdjacentCoordinates(_simulationContext.Rover.CurrentPosition, _simulationContext.Map.Representation.Length);
         var emptyTiles = new List<Coordinate>();
         var map = _simulationContext.Map;
 
@@ -36,26 +37,78 @@ public class DirectionalMovement : IDirectionalMovement
 
     public void Move()
     {
-        throw new NotImplementedException();
+        var coords = GetAdjacentEmptyTiles();
+        var acceptedCoords = new List<Coordinate>();
+ 
+        var roverDirection = _simulationContext.Rover.Direction;
+        acceptedCoords = roverDirection switch
+        {
+            RoverDirection.Left => (List<Coordinate>)MoveLeft(coords),
+            RoverDirection.Right => (List<Coordinate>)MoveRight(coords),
+            RoverDirection.Up => (List<Coordinate>)MoveUp(coords),
+            RoverDirection.Down => (List<Coordinate>)MoveDown(coords),
+            _ => acceptedCoords
+        };
+        _simulationContext.Rover.CurrentPosition = acceptedCoords[Random.Next(acceptedCoords.Count)];
     }
     
-    private Coordinate MoveLeft(RoverDirection direction, IEnumerable<Coordinate> coordinates)
+    private IEnumerable<Coordinate> MoveLeft(IEnumerable<Coordinate> coordinates)
     {
-        throw new NotImplementedException();
+        var currentPos = _simulationContext.Rover.CurrentPosition;
+        List<Coordinate> acceptedCoordinates = new List<Coordinate>();
+        foreach (var coordinate in coordinates)
+        {
+            if (coordinate.Y - currentPos.Y <= 0)
+            {
+                acceptedCoordinates.Add(coordinate);
+            }
+        }
+
+        return acceptedCoordinates;
     }
 
-    private Coordinate MoveRight(RoverDirection direction, IEnumerable<Coordinate> coordinates)
+    private IEnumerable<Coordinate> MoveRight(IEnumerable<Coordinate> coordinates)
     {
-        throw new NotImplementedException();
+        var currentPos = _simulationContext.Rover.CurrentPosition;
+        List<Coordinate> acceptedCoordinates = new List<Coordinate>();
+        foreach (var coordinate in coordinates)
+        {
+            if (coordinate.Y - currentPos.Y >= 0)
+            {
+                acceptedCoordinates.Add(coordinate);
+            }
+        }
+
+        return acceptedCoordinates;
     }
 
-    private Coordinate MoveDown(RoverDirection direction, IEnumerable<Coordinate> coordinates)
+    private IEnumerable<Coordinate> MoveDown(IEnumerable<Coordinate> coordinates)
     {
-        throw new NotImplementedException();
+        var currentPos = _simulationContext.Rover.CurrentPosition;
+        List<Coordinate> acceptedCoordinates = new List<Coordinate>();
+        foreach (var coordinate in coordinates)
+        {
+            if (coordinate.X - currentPos.X >= 0)
+            {
+                acceptedCoordinates.Add(coordinate);
+            }
+        }
+
+        return acceptedCoordinates;
     }
 
-    private Coordinate MoveUp(RoverDirection direction, IEnumerable<Coordinate> coordinates)
+    private IEnumerable<Coordinate> MoveUp(IEnumerable<Coordinate> coordinates)
     {
-        throw new NotImplementedException();
+        var currentPos = _simulationContext.Rover.CurrentPosition;
+        List<Coordinate> acceptedCoordinates = new List<Coordinate>();
+        foreach (var coordinate in coordinates)
+        {
+            if (coordinate.X - currentPos.X <= 0)
+            {
+                acceptedCoordinates.Add(coordinate);
+            }
+        }
+
+        return acceptedCoordinates;
     }
 }

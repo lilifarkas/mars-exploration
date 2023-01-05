@@ -1,3 +1,4 @@
+using Codecool.MarsExploration.MapExplorer.Direction;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Service;
 using Codecool.MarsExploration.MapGenerator.MapElements.Model;
@@ -24,7 +25,7 @@ public class RoverDeployer : IRoverDeployer
     public Rover Deploy()
     {
         int count = 0;
-        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(_configuration.LandingSpot, 9).ToList();
+        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(_configuration.LandingSpot, 31).ToList();
         var visibleTiles = GetVisibleTiles(GetTargetCoordinate(adjacentCoordinates));
         var encounteredResources = new List<Coordinate>();
         var map = _mapLoader.Load(_configuration.MapFile);
@@ -37,14 +38,13 @@ public class RoverDeployer : IRoverDeployer
             }
         }
 
-        return new Rover($"MER-B Opportunity-{count += 1}", GetTargetCoordinate(adjacentCoordinates), visibleTiles ,encounteredResources);
+        return new Rover($"MER-B Opportunity-{count += 1}", GetTargetCoordinate(adjacentCoordinates), visibleTiles ,encounteredResources, RoverDirection.Right);
     }
     
     private Coordinate GetTargetCoordinate(List<Coordinate> coordinates)
     {
-        return coordinates.Any()
-            ? coordinates[Random.Next(coordinates.Count)]
-            : _coordinateCalculator.GetRandomCoordinate(9);
+        var randomCoord = Random.Next(coordinates.Count);
+        return coordinates[randomCoord];
     }
     
     private IEnumerable<Coordinate> GetVisibleTiles(Coordinate coordinate)
