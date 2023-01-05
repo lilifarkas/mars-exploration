@@ -14,8 +14,8 @@ public class LackOfResourcesAnalyzer : IOutcomeAnalyzer
         var mapCharts = simulationContext.Map.Representation.GetLength(0) * simulationContext.Map.Representation.GetLength(1);
         var roverExplored = simulationContext.Rover.EncounteredResources.Count();
         
-        var countMinerals = simulationContext.SymbolsToLookFor.Count(x => x == "mineral");
-        var countWaters = simulationContext.SymbolsToLookFor.Count(x => x == "water");
+        var countMinerals = simulationContext.Rover.EncounteredResources.Count();
+        var countWaters = simulationContext.Rover.EncounteredResources.Count();
 
         if ((double)roverExplored / mapCharts > 0.7 && countMinerals < 4 && countWaters < 3)
         {

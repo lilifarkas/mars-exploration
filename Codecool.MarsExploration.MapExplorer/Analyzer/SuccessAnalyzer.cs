@@ -9,8 +9,8 @@ public class SuccessAnalyzer : IOutcomeAnalyzer
     
     public bool Analize(SimulationContext simulationContext)
     {
-        var countMinerals = simulationContext.SymbolsToLookFor.Count(x => x == "mineral");
-        var countWaters = simulationContext.SymbolsToLookFor.Count(x => x == "water");
+        var countMinerals = simulationContext.Rover.EncounteredResources.Count();
+        var countWaters = simulationContext.Rover.EncounteredResources.Count();
 
         if (countMinerals >= 4 && countWaters >= 3)
         {
