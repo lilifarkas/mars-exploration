@@ -19,7 +19,7 @@ public class ExploringRoutine : BaseRoutine
 
     public override void Step(Rover rover)
     {
-        var adjacentCoords = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 9);
+        var adjacentCoords = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, _simulationContext.Map.Representation.GetLength(0));
         var emptyTiles = new List<Coordinate>();
         var map = _simulationContext.Map;
 
