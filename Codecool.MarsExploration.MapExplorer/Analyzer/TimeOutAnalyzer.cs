@@ -8,7 +8,7 @@ public class TimeOutAnalyzer : IOutcomeAnalyzer
     //if false the simulation should continue
     // if true - simulation stops with TimeOut Outcome
     
-    public ExplorationOutcome Analize(SimulationContext simulationContext)
+    public ExplorationOutcome Analyze(SimulationContext simulationContext)
     {
         if (simulationContext.Step >= simulationContext.StepsToReachTimeOut)
         {
