@@ -61,7 +61,7 @@ public class ExplorationSimulator : IExplorationSimulator
         {
             // var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
             // Console.WriteLine(message);
-            _simulationStepLoggingUi.Run(simulationContext);
+            _simulationStepLoggingUi.Run(simulationContext, step);
             exploringRoutine.Step(simulationContext.Rover);
             var results = new[] {
                 _lackOfResourcesAnalyzer.Analyze(simulationContext), _succesAnalyzer.Analyze(simulationContext),
@@ -71,6 +71,7 @@ public class ExplorationSimulator : IExplorationSimulator
             {
                 var outcome = results.Single(s => s != ExplorationOutcome.InProgress);
                 simulationContext = HandleOutcome(simulationContext, outcome);
+                _simulationStepLoggingUi.Run(simulationContext, step);
             }
             step++;
         }
