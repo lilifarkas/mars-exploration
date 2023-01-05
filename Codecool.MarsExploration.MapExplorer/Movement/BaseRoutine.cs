@@ -23,7 +23,7 @@ public abstract class BaseRoutine
 
     protected void Scan(Rover rover)
     {
-        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 31);
+        rover.VisibleTiles =ScanAdjacent(rover.CurrentPosition, 31);
         
         var map = _simulationContext.Map;
         
@@ -39,6 +39,21 @@ public abstract class BaseRoutine
 
         rover.EncounteredResources = resources;
     }
+    private IEnumerable<Coordinate> ScanAdjacent(Coordinate coordinate, int dimension)
+    {
+        List<Coordinate> coordinates = new List<Coordinate>();
+        for (int i = coordinate.X -5; i <= coordinate.X+5; i++)
+        {
+            for (int j = coordinate.Y-5; j <= coordinate.Y+5; j++)
+            {
+                if (j >=0 && i >= 0 && j <= dimension-5 && i <= dimension-5 && !(j == coordinate.Y && i == coordinate.X))
+                {
+                    coordinates.Add(new Coordinate(i,j));
+                }
+            }
+        }
 
+        return coordinates;
+    }
     public abstract void Step(Rover rover);
 }
