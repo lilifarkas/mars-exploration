@@ -8,30 +8,30 @@ namespace Codecool.MarsExploration.MapExplorer.Movement;
 public abstract class BaseRoutine
 {
     private readonly CoordinateCalculator _coordinateCalculator;
-
     public BaseRoutine(CoordinateCalculator coordinateCalculator)
     {
         _coordinateCalculator = coordinateCalculator;
     }
     
-    public void Move(Rover rover,int x, int y)
+    public void Move(Rover rover,Coordinate coordinate)
     {
-        rover.CurrentPosition = new Coordinate(x, y);
+        rover.CurrentPosition = coordinate;
     }
 
     public void Scan(Rover rover)
     {
-        var map = 
         rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 1);
-        var resources = rover.EncounteredResources;
+        var resources = rover.EncounteredResources.ToList();
         foreach (var visibleTile in rover.VisibleTiles)
         {
             if (visibleTile != null)
             {
-                
+                resources.Add(visibleTile);
             }
         }
+
+        rover.EncounteredResources = resources;
     }
 
-    public abstract void Run(Rover rover);
+    public abstract void Step(Rover rover);
 }
