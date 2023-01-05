@@ -45,8 +45,7 @@ public class ExplorationSimulator : IExplorationSimulator
         ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
         
         var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
-        Console.WriteLine(finishedSimulationContext.Rover.EncounteredResources.Count());
-        
+
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
