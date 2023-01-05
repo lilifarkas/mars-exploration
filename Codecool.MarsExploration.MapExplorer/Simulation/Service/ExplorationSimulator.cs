@@ -37,10 +37,11 @@ public class ExplorationSimulator : IExplorationSimulator
         var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
         var rover = _roverDeployer.Deploy();
         var simulationContext = new SimulationContext(0, configuration.StepsToTimeOut, rover,
-            landingSpot, map, configuration.SymbolsOfTheResources);
-        ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
-        
-        var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
+            configuration.LandingSpot, map, configuration.SymbolsOfTheResources);
+
+        IDirectionalMovement directionalMovement = new DirectionalMovement(simulationContext);
+
+        var finishedSimulationContext = SimulationLoop(simulationContext, directionalMovement);
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
@@ -48,14 +49,14 @@ public class ExplorationSimulator : IExplorationSimulator
         return simulationContext with { ExplorationOutcome = outcome };
     }
 
-    private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
+    private SimulationContext SimulationLoop(SimulationContext simulationContext, IDirectionalMovement directionalMovement)
     {
         int step = 1;
         while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut > step)
         {
             var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
             Console.WriteLine(message);
-            exploringRoutine.Step(simulationContext.Rover);
+            directionalMovement.Move();
             var results = new[] {
                 _lackOfResourcesAnalyzer.Analyze(simulationContext), _succesAnalyzer.Analyze(simulationContext),
                 _timeOutanalyzer.Analyze(simulationContext)
