@@ -23,7 +23,7 @@ public abstract class BaseRoutine
 
     protected void Scan(Rover rover)
     {
-        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 9);
+        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 31);
         
         var map = _simulationContext.Map;
         
@@ -31,7 +31,7 @@ public abstract class BaseRoutine
         
         foreach (var visibleTile in rover.VisibleTiles)
         {
-            if (_simulationContext.SymbolsToLookFor.Contains(map.Representation[visibleTile.X,visibleTile.Y]))
+            if (_simulationContext.SymbolsToLookFor.Contains(map.Representation[visibleTile.X,visibleTile.Y]) && !resources.Contains(visibleTile))
             {
                 resources.Add(visibleTile);
             }
