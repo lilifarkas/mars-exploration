@@ -11,9 +11,11 @@ public class TimeOutAnalyzer : IOutcomeAnalyzer
     {
         if (simulationContext.Step >= simulationContext.StepsToReachTimeOut)
         {
+            // Timeout has been reached
             return true;
         }
 
+        // Timeout has not been reached
         return false;
     }
 }
