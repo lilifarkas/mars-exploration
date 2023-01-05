@@ -1,4 +1,3 @@
-using Codecool.MarsExploration.MapExplorer.Direction;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Service;
 using Codecool.MarsExploration.MapGenerator.MapElements.Model;
@@ -38,7 +37,7 @@ public class RoverDeployer : IRoverDeployer
             }
         }
 
-        return new Rover($"MER-B Opportunity-{count += 1}", GetTargetCoordinate(adjacentCoordinates), visibleTiles ,encounteredResources, RoverDirection.Right);
+        return new Rover($"MER-B Opportunity-{count += 1}", GetTargetCoordinate(adjacentCoordinates), visibleTiles ,encounteredResources);
     }
     
     private Coordinate GetTargetCoordinate(List<Coordinate> coordinates)

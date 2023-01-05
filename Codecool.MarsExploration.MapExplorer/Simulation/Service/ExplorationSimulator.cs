@@ -46,6 +46,8 @@ public class ExplorationSimulator : IExplorationSimulator
         
         var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
 
+
+        SimulationLoop(simulationContext, exploringRoutine);
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
