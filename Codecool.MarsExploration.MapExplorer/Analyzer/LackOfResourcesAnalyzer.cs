@@ -1,3 +1,4 @@
+using Codecool.MarsExploration.MapExplorer.Exploration;
 using Codecool.MarsExploration.MapExplorer.Simulation.Model;
 
 namespace Codecool.MarsExploration.MapExplorer.Analyzer;
@@ -9,19 +10,33 @@ public class LackOfResourcesAnalyzer : IOutcomeAnalyzer
     // - analyzer could check whether the rover has almost explored the whole chart and no right condition has been found.
 
     
-    public bool Analize(SimulationContext simulationContext)
+    public ExplorationOutcome Analize(SimulationContext simulationContext)
     {
         var mapCharts = simulationContext.Map.Representation.GetLength(0) * simulationContext.Map.Representation.GetLength(1);
         var roverExplored = simulationContext.Rover.EncounteredResources.Count();
         
-        var countMinerals = simulationContext.Rover.EncounteredResources.Count();
-        var countWaters = simulationContext.Rover.EncounteredResources.Count();
+        var encounteredCoordinates = simulationContext.Rover.EncounteredResources;
+        var map = simulationContext.Map.Representation;
+        var minerals = new List<string?>();
+        var waters = new List<string?>();
 
-        if ((double)roverExplored / mapCharts > 0.7 && countMinerals < 4 && countWaters < 3)
+        foreach (var coordinate in encounteredCoordinates)
         {
-            return true;
+            if (map[coordinate.X, coordinate.Y] == "%")
+            {
+                minerals.Add(map[coordinate.X, coordinate.Y]);
+            }
+            else if (map[coordinate.X, coordinate.Y] == "*")
+            {
+                waters.Add(map[coordinate.X, coordinate.Y]);
+            }
+        }
+        
+        if ((double)roverExplored / mapCharts > 0.7 && minerals.Count() < 4 && waters.Count() < 3)
+        {
+            return ExplorationOutcome.Error;
         }
 
-        return false;
+        return ExplorationOutcome.InProgress;
     }
 }

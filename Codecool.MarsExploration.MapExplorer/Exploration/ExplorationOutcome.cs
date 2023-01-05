@@ -4,5 +4,6 @@ public enum ExplorationOutcome
 {
     Error,
     Timeout,
-    Colonizable
+    Colonizable,
+    InProgress
 }
