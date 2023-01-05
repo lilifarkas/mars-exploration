@@ -81,7 +81,6 @@ public class ExplorationSimulator : IExplorationSimulator
     {
         while (!_configurationValidator.LandingSpotValidate(map,landingCoordinate))
         {
-            Console.WriteLine("asd");
             landingCoordinate = new Coordinate(Random.Next(map.Representation.GetLength(0)),
                 Random.Next(map.Representation.GetLength(0)));
         }
