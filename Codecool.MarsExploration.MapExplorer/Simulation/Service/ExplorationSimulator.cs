@@ -37,10 +37,11 @@ public class ExplorationSimulator : IExplorationSimulator
         var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
         var rover = _roverDeployer.Deploy();
         var simulationContext = new SimulationContext(0, configuration.StepsToTimeOut, rover,
-            landingSpot, map, configuration.SymbolsOfTheResources);
+            configuration.LandingSpot, map, configuration.SymbolsOfTheResources);
+        Console.WriteLine(simulationContext.Rover.CurrentPosition);
         ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
         
-        var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
+        //var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
@@ -51,7 +52,7 @@ public class ExplorationSimulator : IExplorationSimulator
     private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
     {
         int step = 1;
-        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress)
+        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress || simulationContext.StepsToReachTimeOut == step)
         {
             var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
             Console.WriteLine(message);
@@ -73,6 +74,7 @@ public class ExplorationSimulator : IExplorationSimulator
     {
         while (!_configurationValidator.LandingSpotValidate(map,landingCoordinate))
         {
+            Console.WriteLine("asd");
             landingCoordinate = new Coordinate(Random.Next(map.Representation.GetLength(0)),
                 Random.Next(map.Representation.GetLength(0)));
         }
