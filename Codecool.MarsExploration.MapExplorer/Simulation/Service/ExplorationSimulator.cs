@@ -60,8 +60,6 @@ public class ExplorationSimulator : IExplorationSimulator
         int step = 1;
         while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut >= step)
         {
-            // var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
-            // Console.WriteLine(message);
             _simulationStepLoggingUi.Run(simulationContext, step);
             exploringRoutine.Step(simulationContext.Rover);
             var results = new[] {

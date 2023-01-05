@@ -6,16 +6,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65e463d0-8a8e-4b1c-ba38-e58a8cf8a718" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Analyzer/IOutcomeAnalyzer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Analyzer/LackOfResourcesAnalyzer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Analyzer/SuccessAnalyzer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/Analyzer/TimeOutAnalyzer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/obj/Debug/net6.0/Codecool.MarsExploration.MapExplorer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapExplorer/obj/Debug/net6.0/Codecool.MarsExploration.MapExplorer.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/Codecool.MarsExploration.MapGenerator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/Codecool.MarsExploration.MapGenerator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/Codecool.MarsExploration.MapGenerator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/Codecool.MarsExploration.MapGenerator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/exploration-0.map" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/exploration-0.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/exploration-1.map" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/exploration-1.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/exploration-2.map" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/bin/Debug/net6.0/exploration-2.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/Codecool.MarsExploration.MapGenerator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/Codecool.MarsExploration.MapGenerator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/Codecool.MarsExploration.MapGenerator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/Codecool.MarsExploration.MapGenerator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/ref/Codecool.MarsExploration.MapGenerator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/ref/Codecool.MarsExploration.MapGenerator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/refint/Codecool.MarsExploration.MapGenerator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Codecool.MarsExploration.MapGenerator/obj/Debug/net6.0/refint/Codecool.MarsExploration.MapGenerator.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/IOutcomeAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/IOutcomeAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/LackOfResourcesAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/LackOfResourcesAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/LackOfResourcesAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/LackOfResourcesAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/SuccessAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/SuccessAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/SuccessAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/SuccessAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/TimeOutAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/TimeOutAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/TimeOutAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/TimeOutAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Analyzer/TimeOutAnalyzer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Exploration/ExplorationOutcome.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Movement/IDirectionalMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/Simulation/Service/ExplorationSimulator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/UI/SimulationStepLoggingUi.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/UI/SimulationStepLoggingUi.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/UI/SimulationStepLoggingUi.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Lili/RiderProjects/mars-exploration-2-csharp-dorian-sz/Codecool.MarsExploration.MapExplorer/UI/SimulationStepLoggingUi.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -37,7 +77,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.Codecool.MarsExploration.MapGenerator">
+  <component name="RunManager" selected=".NET Project.Codecool.MarsExploration.MapExplorer">
     <configuration name="Codecool.MarsExploration.MapExplorer" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />

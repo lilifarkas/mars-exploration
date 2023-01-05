@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Codecool.MarsExploration.MapExplorer/1.0.0": {
+        "dependencies": {
+          "Codecool.MarsExploration.MapGenerator": "1.0.0"
+        },
+        "runtime": {
+          "Codecool.MarsExploration.MapExplorer.dll": {}
+        }
+      },
+      "Codecool.MarsExploration.MapGenerator/1.0.0": {
+        "runtime": {
+          "Codecool.MarsExploration.MapGenerator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Codecool.MarsExploration.MapExplorer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Codecool.MarsExploration.MapGenerator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

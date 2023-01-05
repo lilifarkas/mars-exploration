@@ -1,0 +1,19 @@
+Index: Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using Codecool.MarsExploration.MapGenerator.Calculators.Model;\r\n\r\nnamespace Codecool.MarsExploration.MapExplorer.MarsRover;\r\n\r\npublic class Rover\r\n{\r\n    public string Id { get; set; }\r\n    public Coordinate CurrentPosition { get; set; }\r\n    public IEnumerable<Coordinate> VisibleTiles { get; set; }\r\n    public IEnumerable<string> EncounteredResources { get; set; }\r\n    \r\n    public Rover(string id, Coordinate currentPosition)\r\n    {\r\n        Id = id;\r\n        CurrentPosition = currentPosition;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs b/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs
+--- a/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs	(revision 21a7cc7e97edce6d3632a1f8c2f580bcc5f34604)
++++ b/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs	(date 1672920969006)
+@@ -7,7 +7,7 @@
+     public string Id { get; set; }
+     public Coordinate CurrentPosition { get; set; }
+     public IEnumerable<Coordinate> VisibleTiles { get; set; }
+-    public IEnumerable<string> EncounteredResources { get; set; }
++    public IEnumerable<Coordinate> EncounteredResources { get; set; }
+     
+     public Rover(string id, Coordinate currentPosition)
+     {

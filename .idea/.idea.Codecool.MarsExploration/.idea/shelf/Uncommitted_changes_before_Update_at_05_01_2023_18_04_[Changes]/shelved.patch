@@ -1,0 +1,44 @@
+Index: .idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36__Changes_.xml b/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1672925881436)
++++ b/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36__Changes_.xml	(date 1672925881436)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_05_01_2023_14_36_[Changes]" date="1672925804576" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 05/01/2023 14:36 [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36_[Changes]/shelved.patch b/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1672925802848)
++++ b/.idea/.idea.Codecool.MarsExploration/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2023_14_36_[Changes]/shelved.patch	(date 1672925802848)
+@@ -0,0 +1,19 @@
++Index: Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>using Codecool.MarsExploration.MapGenerator.Calculators.Model;\r\n\r\nnamespace Codecool.MarsExploration.MapExplorer.MarsRover;\r\n\r\npublic class Rover\r\n{\r\n    public string Id { get; set; }\r\n    public Coordinate CurrentPosition { get; set; }\r\n    public IEnumerable<Coordinate> VisibleTiles { get; set; }\r\n    public IEnumerable<string> EncounteredResources { get; set; }\r\n    \r\n    public Rover(string id, Coordinate currentPosition)\r\n    {\r\n        Id = id;\r\n        CurrentPosition = currentPosition;\r\n    }\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs b/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs
++--- a/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs	(revision 21a7cc7e97edce6d3632a1f8c2f580bcc5f34604)
+++++ b/Codecool.MarsExploration.MapExplorer/MarsRover/Model/Rover.cs	(date 1672920969006)
++@@ -7,7 +7,7 @@
++     public string Id { get; set; }
++     public Coordinate CurrentPosition { get; set; }
++     public IEnumerable<Coordinate> VisibleTiles { get; set; }
++-    public IEnumerable<string> EncounteredResources { get; set; }
+++    public IEnumerable<Coordinate> EncounteredResources { get; set; }
++     
++     public Rover(string id, Coordinate currentPosition)
++     {
