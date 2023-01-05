@@ -24,7 +24,7 @@ public class RoverDeployer : IRoverDeployer
     public Rover Deploy()
     {
         int count = 0;
-        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(_configuration.LandingSpot, 1).ToList();
+        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(_configuration.LandingSpot, 9).ToList();
         var visibleTiles = GetVisibleTiles(GetTargetCoordinate(adjacentCoordinates));
         var encounteredResources = new List<Coordinate>();
         var map = _mapLoader.Load(_configuration.MapFile);
@@ -44,11 +44,11 @@ public class RoverDeployer : IRoverDeployer
     {
         return coordinates.Any()
             ? coordinates[Random.Next(coordinates.Count)]
-            : _coordinateCalculator.GetRandomCoordinate(1);
+            : _coordinateCalculator.GetRandomCoordinate(9);
     }
     
     private IEnumerable<Coordinate> GetVisibleTiles(Coordinate coordinate)
     {
-        return _coordinateCalculator.GetAdjacentCoordinates(coordinate, 1);
+        return _coordinateCalculator.GetAdjacentCoordinates(coordinate, 9);
     }
 }

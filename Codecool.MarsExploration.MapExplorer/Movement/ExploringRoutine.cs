@@ -39,7 +39,7 @@ public class ExploringRoutine : BaseRoutine
     {
         return coordinates.Any()
             ? coordinates[Random.Next(coordinates.Count)]
-            : _coordinateCalculator.GetRandomCoordinate(1);
+            : _coordinateCalculator.GetRandomCoordinate(9);
     }
     
     private static bool CanMove(string?[,] map, Coordinate coordinate)

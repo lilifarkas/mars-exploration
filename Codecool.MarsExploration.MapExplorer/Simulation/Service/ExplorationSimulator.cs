@@ -34,14 +34,13 @@ public class ExplorationSimulator : IExplorationSimulator
     public void RunSimulation(Configuration.Configuration configuration)
     {
         var map = _mapLoader.Load(configuration.MapFile);
-        var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
+        //var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
         var rover = _roverDeployer.Deploy();
         var simulationContext = new SimulationContext(0, configuration.StepsToTimeOut, rover,
             configuration.LandingSpot, map, configuration.SymbolsOfTheResources);
-        Console.WriteLine(simulationContext.Rover.CurrentPosition);
         ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
         
-        //var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
+        var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
@@ -52,7 +51,7 @@ public class ExplorationSimulator : IExplorationSimulator
     private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
     {
         int step = 1;
-        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress || simulationContext.StepsToReachTimeOut == step)
+        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut > step)
         {
             var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
             Console.WriteLine(message);

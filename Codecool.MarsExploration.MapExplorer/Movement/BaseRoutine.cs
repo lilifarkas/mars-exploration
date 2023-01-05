@@ -23,7 +23,7 @@ public abstract class BaseRoutine
 
     protected void Scan(Rover rover)
     {
-        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 1);
+        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 9);
         
         var map = _simulationContext.Map;
         
