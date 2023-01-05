@@ -44,9 +44,6 @@ public class ExplorationSimulator : IExplorationSimulator
             landingSpot, map, configuration.SymbolsOfTheResources);
         ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
         
-        var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
-
-
         SimulationLoop(simulationContext, exploringRoutine);
     }
 
@@ -55,26 +52,29 @@ public class ExplorationSimulator : IExplorationSimulator
         return simulationContext with { ExplorationOutcome = outcome };
     }
 
-    private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
+    private void SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
     {
         int step = 1;
-        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut >= step)
+        while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress &&
+               simulationContext.StepsToReachTimeOut >= step)
         {
             _simulationStepLoggingUi.Run(simulationContext, step);
             exploringRoutine.Step(simulationContext.Rover);
-            var results = new[] {
-                _lackOfResourcesAnalyzer.Analyze(simulationContext, step), _succesAnalyzer.Analyze(simulationContext, step),
+            var results = new[]
+            {
+                _lackOfResourcesAnalyzer.Analyze(simulationContext, step),
+                _succesAnalyzer.Analyze(simulationContext, step),
                 _timeOutanalyzer.Analyze(simulationContext, step)
             };
-            if (results.Any(s=> s != ExplorationOutcome.InProgress))
+            if (results.Any(s => s != ExplorationOutcome.InProgress))
             {
                 var outcome = results.Single(s => s != ExplorationOutcome.InProgress);
                 simulationContext = HandleOutcome(simulationContext, outcome);
                 _simulationStepLoggingUi.Run(simulationContext, step);
             }
+
             step++;
         }
-        return simulationContext with { Step = step };
     }
     private Coordinate CheckLandingSpotForClear(Coordinate landingCoordinate, Map map)
     {
