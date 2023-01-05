@@ -15,7 +15,7 @@ public abstract class BaseRoutine
     {
         _simulationContext = simulationContext;
     }
-
+    
     protected void Move(Rover rover,Coordinate coordinate)
     {
         rover.CurrentPosition = coordinate;
@@ -23,7 +23,7 @@ public abstract class BaseRoutine
 
     protected void Scan(Rover rover)
     {
-        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 9);
+        rover.VisibleTiles = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 31);
         
         var map = _simulationContext.Map;
         
