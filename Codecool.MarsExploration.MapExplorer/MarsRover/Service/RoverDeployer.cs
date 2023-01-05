@@ -12,11 +12,14 @@ public class RoverDeployer : IRoverDeployer
     private static readonly Random Random = new();
 
     private readonly Configuration.Configuration _configuration;
+    
+    private readonly MapLoader.MapLoader _mapLoader;
 
-    public RoverDeployer(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration)
+    public RoverDeployer(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration, MapLoader.MapLoader mapLoader)
     {
         _coordinateCalculator = coordinateCalculator;
         _configuration = configuration;
+        _mapLoader = mapLoader;
     }
     public Rover Deploy()
     {
@@ -24,9 +27,11 @@ public class RoverDeployer : IRoverDeployer
         var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(_configuration.LandingSpot, 1).ToList();
         var visibleTiles = GetVisibleTiles(GetTargetCoordinate(adjacentCoordinates));
         var encounteredResources = new List<Coordinate>();
+        var map = _mapLoader.Load(_configuration.MapFile);
+        
         foreach (var visibleTile in visibleTiles)
         {
-            if (visibleTile != null)
+            if (_configuration.SymbolsOfTheResources.Contains(map.Representation[visibleTile.X,visibleTile.Y]))
             {
                 encounteredResources.Add(visibleTile);
             }
