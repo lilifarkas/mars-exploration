@@ -43,10 +43,8 @@ public class ExplorationSimulator : IExplorationSimulator
         var simulationContext = new SimulationContext(0, configuration.StepsToTimeOut, rover,
             landingSpot, map, configuration.SymbolsOfTheResources);
         ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
-        
-        var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
-        Console.WriteLine(finishedSimulationContext.Rover.EncounteredResources.Count());
-        
+
+        SimulationLoop(simulationContext, exploringRoutine);
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
@@ -54,15 +52,14 @@ public class ExplorationSimulator : IExplorationSimulator
         return simulationContext with { ExplorationOutcome = outcome };
     }
 
-    private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
+    private void SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
     {
         int step = 1;
         while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut >= step)
         {
-            // var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
-            // Console.WriteLine(message);
             _simulationStepLoggingUi.Run(simulationContext, step);
             exploringRoutine.Step(simulationContext.Rover);
+
             var results = new[] {
                 _lackOfResourcesAnalyzer.Analyze(simulationContext, step), _succesAnalyzer.Analyze(simulationContext, step),
                 _timeOutanalyzer.Analyze(simulationContext, step)
@@ -75,7 +72,6 @@ public class ExplorationSimulator : IExplorationSimulator
             }
             step++;
         }
-        return simulationContext with { Step = step };
     }
     private Coordinate CheckLandingSpotForClear(Coordinate landingCoordinate, Map map)
     {
