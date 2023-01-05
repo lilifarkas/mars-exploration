@@ -6,6 +6,7 @@ using Codecool.MarsExploration.MapExplorer.MarsRover;
 using Codecool.MarsExploration.MapExplorer.MarsRover.Service;
 using Codecool.MarsExploration.MapExplorer.Movement;
 using Codecool.MarsExploration.MapExplorer.Simulation.Model;
+using Codecool.MarsExploration.MapExplorer.UI;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.MapElements.Model;
 
@@ -20,8 +21,10 @@ public class ExplorationSimulator : IExplorationSimulator
     private  IOutcomeAnalyzer _succesAnalyzer;
     private  IOutcomeAnalyzer _timeOutanalyzer;
     private IRoverDeployer _roverDeployer;
+    private SimulationStepLoggingUi _simulationStepLoggingUi;
+    
 
-    public ExplorationSimulator(IMapLoader mapLoader, IConfigurationValidator configurationValidator, IOutcomeAnalyzer lackOfResourcesAnalyzer, IOutcomeAnalyzer succesAnalyzer, IOutcomeAnalyzer timeOutanalyzer, IRoverDeployer roverDeployer)
+    public ExplorationSimulator(IMapLoader mapLoader, IConfigurationValidator configurationValidator, IOutcomeAnalyzer lackOfResourcesAnalyzer, IOutcomeAnalyzer succesAnalyzer, IOutcomeAnalyzer timeOutanalyzer, IRoverDeployer roverDeployer, SimulationStepLoggingUi simulationStepLoggingUi)
     {
         _mapLoader = mapLoader;
         _configurationValidator = configurationValidator;
@@ -29,6 +32,7 @@ public class ExplorationSimulator : IExplorationSimulator
         _succesAnalyzer = succesAnalyzer;
         _timeOutanalyzer = timeOutanalyzer;
         _roverDeployer = roverDeployer;
+        _simulationStepLoggingUi = simulationStepLoggingUi;
     }
 
     public void RunSimulation(Configuration.Configuration configuration)
@@ -37,11 +41,12 @@ public class ExplorationSimulator : IExplorationSimulator
         var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
         var rover = _roverDeployer.Deploy();
         var simulationContext = new SimulationContext(0, configuration.StepsToTimeOut, rover,
-            configuration.LandingSpot, map, configuration.SymbolsOfTheResources);
-
-        IDirectionalMovement directionalMovement = new DirectionalMovement(simulationContext);
-
-        var finishedSimulationContext = SimulationLoop(simulationContext, directionalMovement);
+            landingSpot, map, configuration.SymbolsOfTheResources);
+        ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
+        
+        var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);
+        Console.WriteLine(finishedSimulationContext.Rover.EncounteredResources.Count());
+        
     }
 
     public SimulationContext HandleOutcome(SimulationContext simulationContext, ExplorationOutcome outcome)
@@ -49,14 +54,15 @@ public class ExplorationSimulator : IExplorationSimulator
         return simulationContext with { ExplorationOutcome = outcome };
     }
 
-    private SimulationContext SimulationLoop(SimulationContext simulationContext, IDirectionalMovement directionalMovement)
+    private SimulationContext SimulationLoop(SimulationContext simulationContext, ExploringRoutine exploringRoutine)
     {
         int step = 1;
         while (simulationContext.ExplorationOutcome == ExplorationOutcome.InProgress && simulationContext.StepsToReachTimeOut > step)
         {
-            var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
-            Console.WriteLine(message);
-            directionalMovement.Move();
+            // var message = $"STEP: {step}, POSITION: {simulationContext.Rover.CurrentPosition}";
+            // Console.WriteLine(message);
+            _simulationStepLoggingUi.Run(simulationContext, step);
+            exploringRoutine.Step(simulationContext.Rover);
             var results = new[] {
                 _lackOfResourcesAnalyzer.Analyze(simulationContext), _succesAnalyzer.Analyze(simulationContext),
                 _timeOutanalyzer.Analyze(simulationContext)
@@ -65,6 +71,7 @@ public class ExplorationSimulator : IExplorationSimulator
             {
                 var outcome = results.Single(s => s != ExplorationOutcome.InProgress);
                 simulationContext = HandleOutcome(simulationContext, outcome);
+                _simulationStepLoggingUi.Run(simulationContext, step);
             }
             step++;
         }

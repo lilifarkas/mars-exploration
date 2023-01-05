@@ -31,7 +31,7 @@ public abstract class BaseRoutine
         
         foreach (var visibleTile in rover.VisibleTiles)
         {
-            if (_simulationContext.SymbolsToLookFor.Contains(map.Representation[visibleTile.X,visibleTile.Y]))
+            if (_simulationContext.SymbolsToLookFor.Contains(map.Representation[visibleTile.X,visibleTile.Y]) && !resources.Contains(visibleTile))
             {
                 resources.Add(visibleTile);
             }
