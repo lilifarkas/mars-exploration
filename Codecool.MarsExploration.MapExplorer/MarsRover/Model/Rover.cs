@@ -7,11 +7,13 @@ public class Rover
     public string Id { get; set; }
     public Coordinate CurrentPosition { get; set; }
     public IEnumerable<Coordinate> VisibleTiles { get; set; }
-    public IEnumerable<string> EncounteredResources { get; set; }
+    public IEnumerable<Coordinate> EncounteredResources { get; set; }
     
-    public Rover(string id, Coordinate currentPosition)
+    public Rover(string id, Coordinate currentPosition, IEnumerable<Coordinate> visibleTiles, IEnumerable<Coordinate> encounteredResources)
     {
         Id = id;
         CurrentPosition = currentPosition;
+        VisibleTiles = visibleTiles;
+        EncounteredResources = encounteredResources;
     }
 }

@@ -11,14 +11,17 @@ public class RoverDeployer : IRoverDeployer
     
     private static readonly Random Random = new();
 
-    public RoverDeployer(CoordinateCalculator coordinateCalculator)
+    private readonly Configuration.Configuration _configuration;
+
+    public RoverDeployer(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration)
     {
         _coordinateCalculator = coordinateCalculator;
+        _configuration = configuration;
     }
-    public Rover Deploy(Configuration.Configuration configuration)
+    public Rover Deploy()
     {
         int count = 0;
-        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(configuration.LandingSpot, 1).ToList();
+        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(_configuration.LandingSpot, 1).ToList();
         var visibleTiles = GetVisibleTiles(GetTargetCoordinate(adjacentCoordinates));
         var encounteredResources = new List<Coordinate>();
         foreach (var visibleTile in visibleTiles)
@@ -29,7 +32,7 @@ public class RoverDeployer : IRoverDeployer
             }
         }
 
-        return new Rover($"rover-{count += 1}", GetTargetCoordinate(adjacentCoordinates));
+        return new Rover($"rover-{count += 1}", GetTargetCoordinate(adjacentCoordinates), visibleTiles ,encounteredResources);
     }
     
     private Coordinate GetTargetCoordinate(List<Coordinate> coordinates)
