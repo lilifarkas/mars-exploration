@@ -2,4 +2,16 @@
 
 namespace Codecool.MarsExploration.MapExplorer.MarsRover;
 
-public record Rover(string Id, Coordinate CurrentPosition, IEnumerable<Coordinate>VisibleTiles, IEnumerable<Coordinate>EncounteredResources);
+public class Rover
+{
+    public string Id { get; set; }
+    public Coordinate CurrentPosition { get; set; }
+    public IEnumerable<Coordinate> VisibleTiles { get; set; }
+    public IEnumerable<string> EncounteredResources { get; set; }
+    
+    public Rover(string id, Coordinate currentPosition)
+    {
+        Id = id;
+        CurrentPosition = currentPosition;
+    }
+}
