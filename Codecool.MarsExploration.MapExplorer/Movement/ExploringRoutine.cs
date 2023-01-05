@@ -2,6 +2,7 @@ using Codecool.MarsExploration.MapExplorer.MarsRover;
 using Codecool.MarsExploration.MapExplorer.Simulation.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Model;
 using Codecool.MarsExploration.MapGenerator.Calculators.Service;
+using Codecool.MarsExploration.MapGenerator.MapElements.Model;
 
 namespace Codecool.MarsExploration.MapExplorer.Movement;
 
@@ -18,17 +19,18 @@ public class ExploringRoutine : BaseRoutine
 
     public override void Step(Rover rover)
     {
+        var adjacentCoords = _coordinateCalculator.GetAdjacentCoordinates(rover.CurrentPosition, 9);
         var emptyTiles = new List<Coordinate>();
-
         var map = _simulationContext.Map;
-        
-        foreach (var visibleTile in rover.VisibleTiles)
+
+        foreach (var adjacentCoord in adjacentCoords)
         {
-            if (CanMove(map.Representation,visibleTile) && map.IsEmpty(visibleTile))
+            if (map.Representation[adjacentCoord.X, adjacentCoord.Y] == " " && adjacentCoord != rover.CurrentPosition)
             {
-                emptyTiles.Add(visibleTile);
+                emptyTiles.Add(adjacentCoord);   
             }
         }
+        
         var randomCoordinate = GetTargetCoordinate(emptyTiles);
         
         Move(rover, randomCoordinate);
@@ -37,9 +39,9 @@ public class ExploringRoutine : BaseRoutine
     
     private Coordinate GetTargetCoordinate(List<Coordinate> coordinates)
     {
-        return coordinates.Any()
-            ? coordinates[Random.Next(coordinates.Count)]
-            : _coordinateCalculator.GetRandomCoordinate(9);
+        var randomCoord = Random.Next(coordinates.Count);
+
+        return coordinates[randomCoord];
     }
     
     private static bool CanMove(string?[,] map, Coordinate coordinate)
@@ -48,6 +50,6 @@ public class ExploringRoutine : BaseRoutine
                && coordinate.X < map.GetLength(0)
                && coordinate.Y >= 0
                && coordinate.Y < map.GetLength(1)
-               && map[coordinate.X, coordinate.Y] == null;
+               && map[coordinate.X, coordinate.Y] == " ";
     }
 }
