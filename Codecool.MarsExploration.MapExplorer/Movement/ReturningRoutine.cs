@@ -8,7 +8,7 @@ public class ReturningRoutine : BaseRoutine
 {
     
     private readonly Configuration.Configuration _configuration;
-    public ReturningRoutine(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration) : base(coordinateCalculator)
+    public ReturningRoutine(CoordinateCalculator coordinateCalculator, Configuration.Configuration configuration, MapLoader.MapLoader mapLoader) : base(coordinateCalculator, configuration, mapLoader)
     {
         _configuration = configuration;
     }
