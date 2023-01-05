@@ -34,10 +34,10 @@ public class ExplorationSimulator : IExplorationSimulator
     public void RunSimulation(Configuration.Configuration configuration)
     {
         var map = _mapLoader.Load(configuration.MapFile);
-        //var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
+        var landingSpot = CheckLandingSpotForClear(configuration.LandingSpot, map);
         var rover = _roverDeployer.Deploy();
         var simulationContext = new SimulationContext(0, configuration.StepsToTimeOut, rover,
-            configuration.LandingSpot, map, configuration.SymbolsOfTheResources);
+            landingSpot, map, configuration.SymbolsOfTheResources);
         ExploringRoutine exploringRoutine = new ExploringRoutine(simulationContext);
         
         var finishedSimulationContext = SimulationLoop(simulationContext, exploringRoutine);

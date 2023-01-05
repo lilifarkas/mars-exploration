@@ -10,7 +10,7 @@ public class ConfigurationValidator : IConfigurationValidator
     public bool LandingSpotValidate(Map map, Coordinate landingCoordinates)
     {
         return map.Representation[landingCoordinates.X, landingCoordinates.Y] == " " &&
-               _coordinateCalculator.GetAdjacentCoordinates(landingCoordinates, 3).Any(coord => map.Representation[coord.X,coord.Y] == " ");
+               _coordinateCalculator.GetAdjacentCoordinates(landingCoordinates, 9).Any(coord => map.Representation[coord.X,coord.Y] == " ");
     }
     
     public bool MapFileValidate(string mapFile)
