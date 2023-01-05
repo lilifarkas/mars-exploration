@@ -7,13 +7,19 @@ namespace Codecool.MarsExploration.MapExplorer.MarsRover.Service;
 
 public class RoverDeployer : IRoverDeployer
 {
+    private readonly CoordinateCalculator _coordinateCalculator;
+    
     private static readonly Random Random = new();
-    public Rover Deploy(Configuration.Configuration configuration, CoordinateCalculator coordinateCalculator)
+
+    public RoverDeployer(CoordinateCalculator coordinateCalculator)
+    {
+        _coordinateCalculator = coordinateCalculator;
+    }
+    public Rover Deploy(Configuration.Configuration configuration)
     {
         int count = 0;
-        var adjacentCoordinates = coordinateCalculator.GetAdjacentCoordinates(configuration.LandingSpot, 1).ToList();
-        var visibleTiles = GetVisibleTiles(GetTargetCoordinate(adjacentCoordinates, coordinateCalculator),
-            coordinateCalculator);
+        var adjacentCoordinates = _coordinateCalculator.GetAdjacentCoordinates(configuration.LandingSpot, 1).ToList();
+        var visibleTiles = GetVisibleTiles(GetTargetCoordinate(adjacentCoordinates));
         var encounteredResources = new List<Coordinate>();
         foreach (var visibleTile in visibleTiles)
         {
@@ -23,19 +29,18 @@ public class RoverDeployer : IRoverDeployer
             }
         }
 
-        return new Rover($"rover-{count += 1}", GetTargetCoordinate(adjacentCoordinates, coordinateCalculator), visibleTiles,
-            encounteredResources);
+        return new Rover($"rover-{count += 1}", GetTargetCoordinate(adjacentCoordinates));
     }
     
-    private Coordinate GetTargetCoordinate(List<Coordinate> coordinates, CoordinateCalculator coordinateCalculator)
+    private Coordinate GetTargetCoordinate(List<Coordinate> coordinates)
     {
         return coordinates.Any()
             ? coordinates[Random.Next(coordinates.Count)]
-            : coordinateCalculator.GetRandomCoordinate(1);
+            : _coordinateCalculator.GetRandomCoordinate(1);
     }
     
-    private IEnumerable<Coordinate> GetVisibleTiles(Coordinate coordinate, CoordinateCalculator coordinateCalculator)
+    private IEnumerable<Coordinate> GetVisibleTiles(Coordinate coordinate)
     {
-        return coordinateCalculator.GetAdjacentCoordinates(coordinate, 1);
+        return _coordinateCalculator.GetAdjacentCoordinates(coordinate, 1);
     }
 }
