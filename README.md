@@ -18,7 +18,7 @@ To run the Mars Exploration application, follow these steps:
    ```powershell
    git clone https://github.com/lilifarkas/mars-exploration.git
    ```
-2.Navigate to the project directory:
+2. Navigate to the project directory:
    ```powershell
    Codecool.MarsExploration.MapExplorer
    ```
