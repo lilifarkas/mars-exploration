@@ -34,21 +34,22 @@ The project structure is organized as follows:
 
 mars-exploration/
 ├── Mapgenerator/
-│   ├── Calculators
-│   ├── Configuration
-│   └── MapElements
-│   └── Output/Service
-├── Mapexplorer/
-│   ├── Analyzer
-│   ├── Configuration
-│   └── Exploration
-│   └── Logger
-│   └── MapLoader
-│   └── MarsRover
-│   └── Movement
-│   └── Resources
-│   └── Simulation
-│   └── UI
+│   ├── Calculators/
+│   ├── Configuration/
+│   └── MapElements/
+│   └── Output/
+│       └── Service/
+└── Mapexplorer/
+    ├── Analyzer/
+    ├── Configuration/
+    ├── Exploration/
+    ├── Logger/
+    ├── MapLoader/
+    ├── MarsRover/
+    ├── Movement/
+    ├── Resources/
+    ├── Simulation/
+    └── UI/
 
 
    
