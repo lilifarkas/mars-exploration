@@ -13,18 +13,16 @@ The Mapexplorer component implements the logic for the Rover to navigate and exp
 ## Getting Started
 
 To run the Mars Exploration application, follow these steps:
-1. Clone the repository:
 
+1. Clone the repository:
    ```powershell
    git clone https://github.com/lilifarkas/mars-exploration.git
    ```
 2.Navigate to the project directory:
-
    ```powershell
    Codecool.MarsExploration.MapExplorer
    ```
 3. Run the Mapexplorer:
-
    ```powershell
    dotnet run --project Mapexplorer
    ```
